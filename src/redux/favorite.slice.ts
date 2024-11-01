@@ -4,8 +4,23 @@ interface IFavoriteState {
   favorites: number[];
 }
 
+const safeLocalStorage = {
+  getItem: (key: string) => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem(key);
+    }
+    return null;
+  },
+  setItem: (key: string, value: string) => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(key, value);
+    }
+  }
+};
+
+
 const initialState: IFavoriteState = {
-  favorites: JSON.parse(localStorage.getItem('favorites') ?? '[]'),
+  favorites: JSON.parse(safeLocalStorage.getItem('favorites') || '[]')
 };
 
 const FavoriteSlice = createSlice({

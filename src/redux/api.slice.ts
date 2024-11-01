@@ -1,9 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 
+console.log('process.env.NEXT_PUBLIC_MORTI_API: ', process.env.NEXT_PUBLIC_MORTI_API);
 export const apiSlice = createApi({
     baseQuery: fetchBaseQuery({
-        baseUrl: process.env.REACT_APP_MORTI_API,
+        baseUrl: process.env.NEXT_PUBLIC_MORTI_API,
         // credentials: "include",
         prepareHeaders: (headers, { endpoint, extra, type, getState }) => {
             if (!headers.has("Content-Type")) {

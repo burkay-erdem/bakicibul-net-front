@@ -12,11 +12,13 @@ interface IReadListResponse extends IResponseInfo {
     results: ICharacterSchema[]
 }
 export type ICharacterStatus = "all" | "alive" | "dead" | "unknown"
+export type ICharacterGender = "all" | "female" | "male" | "genderless" | "unknown"
 interface IReadRequest {
     characterId?: string,
 }
 interface IReadListRequest extends IListQuery {
     status: ICharacterStatus,
+    gender: ICharacterGender
 
 }
 interface IReadFavoriteListRequest extends IListQuery {
